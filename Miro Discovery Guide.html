@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)file:///Users/paddyocallaghan/Downloads/miro-discovery-guide_1.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miro Discovery Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="./Miro Discovery Guide_files/css2" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f7f6f2;
+    --surface: #ffffff;
+    --surface-2: #f0efe9;
+    --border: rgba(0,0,0,0.08);
+    --border-strong: rgba(0,0,0,0.14);
+    --text-primary: #1a1916;
+    --text-secondary: #5a5850;
+    --text-tertiary: #9a9890;
+    --l1-bg: #fff0eb;
+    --l1-border: #f0a080;
+    --l1-text: #8a3010;
+    --l1-pill: #fad0be;
+    --l2-bg: #fff8eb;
+    --l2-border: #f0c060;
+    --l2-text: #7a4808;
+    --l2-pill: #fae0a0;
+    --l3-bg: #eef7e8;
+    --l3-border: #88c050;
+    --l3-text: #2a5c10;
+    --l3-pill: #c8e8a0;
+    --accent: #1a1916;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141412;
+      --surface: #1e1d1a;
+      --surface-2: #252420;
+      --border: rgba(255,255,255,0.08);
+      --border-strong: rgba(255,255,255,0.14);
+      --text-primary: #f0ede6;
+      --text-secondary: #a8a498;
+      --text-tertiary: #686460;
+      --l1-bg: #3a1808;
+      --l1-border: #8a4020;
+      --l1-text: #fac0a0;
+      --l1-pill: #6a2810;
+      --l2-bg: #382208;
+      --l2-border: #885020;
+      --l2-text: #fad090;
+      --l2-pill: #604010;
+      --l3-bg: #142808;
+      --l3-border: #386818;
+      --l3-text: #a8e878;
+      --l3-pill: #204808;
+    }
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .page-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 2rem 6rem;
+  }
+
+  /* ── Header ── */
+  .site-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .miro-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    background: var(--text-primary);
+    color: var(--bg);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+  }
+  .header-divider {
+    width: 1px;
+    height: 16px;
+    background: var(--border-strong);
+  }
+  .header-label {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── Hero ── */
+  .hero { margin-bottom: 2.5rem; }
+  .hero h1 {
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+  .hero h1 em {
+    font-style: normal;
+    font-weight: 500;
+  }
+  .hero p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    max-width: 560px;
+    line-height: 1.7;
+  }
+
+  /* ── Descent strip ── */
+  .descent-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 0;
+    align-items: stretch;
+    margin-bottom: 3rem;
+  }
+  .level-card {
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.25rem 1rem;
+    border: 1px solid transparent;
+    transition: transform 0.15s;
+  }
+  .level-card:hover { transform: translateY(-2px); }
+  .level-card.l1 { background: var(--l1-bg); border-color: var(--l1-border); }
+  .level-card.l2 { background: var(--l2-bg); border-color: var(--l2-border); }
+  .level-card.l3 { background: var(--l3-bg); border-color: var(--l3-border); }
+  .level-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .level-card.l1 .level-num { color: var(--l1-text); }
+  .level-card.l2 .level-num { color: var(--l2-text); }
+  .level-card.l3 .level-num { color: var(--l3-text); }
+  .level-name {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .level-card.l1 .level-name { color: var(--l1-text); }
+  .level-card.l2 .level-name { color: var(--l2-text); }
+  .level-card.l3 .level-name { color: var(--l3-text); }
+  .level-desc { font-size: 12px; line-height: 1.55; margin-bottom: 10px; }
+  .level-card.l1 .level-desc { color: var(--l1-text); opacity: 0.8; }
+  .level-card.l2 .level-desc { color: var(--l2-text); opacity: 0.8; }
+  .level-card.l3 .level-desc { color: var(--l3-text); opacity: 0.8; }
+  .level-pill {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .level-card.l1 .level-pill { background: var(--l1-pill); color: var(--l1-text); }
+  .level-card.l2 .level-pill { background: var(--l2-pill); color: var(--l2-text); }
+  .level-card.l3 .level-pill { background: var(--l3-pill); color: var(--l3-text); }
+  .arrow-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+    color: var(--text-tertiary);
+    font-size: 20px;
+  }
+
+  /* ── Section label ── */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  /* ── Use case tabs ── */
+  .tab-wrap {
+    background: var(--surface-2);
+    border-radius: var(--radius-lg);
+    padding: 6px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+    margin-bottom: 1.5rem;
+  }
+  .uc-tab {
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 10px 6px 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.12s, color 0.12s;
+    color: var(--text-tertiary);
+    font-family: 'DM Sans', sans-serif;
+  }
+  .uc-tab:hover { background: var(--surface); color: var(--text-secondary); }
+  .uc-tab.active {
+    background: var(--surface);
+    color: var(--text-primary);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .uc-tab svg { display: block; margin: 0 auto 5px; }
+  .uc-tab-name {
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.3;
+    display: block;
+  }
+
+  /* ── Detail panel ── */
+  .detail-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    margin-bottom: 2.5rem;
+    animation: fadeIn 0.18s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+  .detail-header { margin-bottom: 1.5rem; }
+  .detail-title { font-size: 20px; font-weight: 500; color: var(--text-primary); margin-bottom: 8px; }
+  .theme-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .theme-chip {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--surface-2);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+  }
+  .descent-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 1.5rem; }
+  .descent-item { display: grid; grid-template-columns: 76px 1fr; gap: 14px; align-items: start; }
+  .d-badge {
+    border-radius: var(--radius-sm);
+    padding: 8px 0;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    line-height: 1.6;
+  }
+  .d-badge.l1 { background: var(--l1-bg); color: var(--l1-text); border: 1px solid var(--l1-border); }
+  .d-badge.l2 { background: var(--l2-bg); color: var(--l2-text); border: 1px solid var(--l2-border); }
+  .d-badge.l3 { background: var(--l3-bg); color: var(--l3-text); border: 1px solid var(--l3-border); }
+  .d-content { padding-top: 6px; }
+  .d-headline { font-size: 14px; font-weight: 500; color: var(--text-primary); line-height: 1.4; margin-bottom: 4px; }
+  .d-note { font-size: 13px; color: var(--text-secondary); line-height: 1.55; }
+  .metrics-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 1.25rem; }
+  .metrics-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 10px;
+  }
+  .metrics-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .metric-chip {
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background: var(--surface-2);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+  }
+
+  /* ── Questions ── */
+  .questions-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+  }
+  .q-header {
+    padding: 1.25rem 1.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .q-header p { font-size: 15px; font-weight: 500; color: var(--text-primary); }
+  .q-section { padding: 1.25rem 1.75rem; border-bottom: 1px solid var(--border); }
+  .q-section:last-child { border-bottom: none; }
+  .q-badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .q-badge.l1 { background: var(--l1-bg); color: var(--l1-text); border: 1px solid var(--l1-border); }
+  .q-badge.l2 { background: var(--l2-bg); color: var(--l2-text); border: 1px solid var(--l2-border); }
+  .q-badge.l3 { background: var(--l3-bg); color: var(--l3-text); border: 1px solid var(--l3-border); }
+  .q-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .q-item { font-size: 13px; color: var(--text-secondary); line-height: 1.5; display: flex; gap: 10px; }
+  .q-item::before { content: '–'; color: var(--text-tertiary); flex-shrink: 0; }
+
+  /* ── Tip ── */
+  .tip {
+    border-left: 3px solid var(--l3-border);
+    padding: 1rem 1.25rem;
+    background: var(--l3-bg);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    font-size: 14px;
+    color: var(--l3-text);
+    line-height: 1.7;
+  }
+  .tip strong { font-weight: 500; }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .page-wrap { padding: 2rem 1.25rem 4rem; }
+    .descent-row { grid-template-columns: 1fr; }
+    .arrow-col { transform: rotate(90deg); padding: 4px 0; height: 32px; }
+    .tab-wrap { grid-template-columns: repeat(5, 1fr); }
+    .uc-tab-name { font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <header class="site-header">
+    <span class="miro-badge">MIRO</span>
+    <div class="header-divider"></div>
+    <span class="header-label">Discovery Guide</span>
+  </header>
+
+  <div class="hero">
+    <h1>Discover <em>&amp; Descend</em></h1>
+    <p>Most reps hear a surface problem and immediately demo. Strong discovery descends from friction → operational impact → executive metric. That's where urgency lives.</p>
+  </div>
+
+  <div class="descent-row">
+    <div class="level-card l1">
+      <span class="level-num">L1</span>
+      <p class="level-name">Symptom / Friction</p>
+      <p class="level-desc">Surface workflow pain. User-level inconvenience. Generates interest — not urgency.</p>
+      <span class="level-pill">Creates interest</span>
+    </div>
+    <div class="arrow-col">→</div>
+    <div class="level-card l2">
+      <span class="level-num">L2</span>
+      <p class="level-name">Operational impact</p>
+      <p class="level-desc">Business process consequences. Connects pain to team-level slowdown and rework.</p>
+      <span class="level-pill">Creates importance</span>
+    </div>
+    <div class="arrow-col">→</div>
+    <div class="level-card l3">
+      <span class="level-num">L3</span>
+      <p class="level-name">Executive metric</p>
+      <p class="level-desc">Quantified business outcome. Tied to KPIs, revenue, risk, or velocity. Budgets unlock here.</p>
+      <span class="level-pill">Creates urgency</span>
+    </div>
+  </div>
+
+  <span class="section-label">Use cases — select to explore</span>
+
+  <div class="tab-wrap" id="tab-grid">
+    <button class="uc-tab active" onclick="select(0)" aria-label="Enterprise Guard">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-4 9-8 10C8 21 4 17 4 12V7l8-4z"></path></svg>
+      <span class="uc-tab-name">Enterprise Guard</span>
+    </button>
+  
+    <button class="uc-tab " onclick="select(1)" aria-label="AI Workflows">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13.5H12L11 22l8.5-11.5H12L13 2z"></path></svg>
+      <span class="uc-tab-name">AI Workflows</span>
+    </button>
+  
+    <button class="uc-tab " onclick="select(2)" aria-label="Prototyping">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M3 15h18M9 3v18M15 3v18"></path></svg>
+      <span class="uc-tab-name">Prototyping</span>
+    </button>
+  
+    <button class="uc-tab " onclick="select(3)" aria-label="Insights">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M12 3v8m-4 0h8M8 11l-4 9h16l-4-9"></path></svg>
+      <span class="uc-tab-name">Insights</span>
+    </button>
+  
+    <button class="uc-tab " onclick="select(4)" aria-label="Engage">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+      <span class="uc-tab-name">Engage</span>
+    </button>
+  
+    <button class="uc-tab " onclick="select(5)" aria-label="Enterprise Plan">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="1"></rect><path d="M9 22V12h6v10M3 9h18M3 15h18M9 3v6M15 3v6"></path></svg>
+      <span class="uc-tab-name">Enterprise Plan</span>
+    </button>
+  
+    <button class="uc-tab " onclick="select(6)" aria-label="MCP / AI">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"></rect><circle cx="9" cy="14" r="1.5" fill="currentColor"></circle><circle cx="15" cy="14" r="1.5" fill="currentColor"></circle><path d="M12 3v5M8 8V6M16 8V6M7 20v2M17 20v2"></path></svg>
+      <span class="uc-tab-name">MCP / AI</span>
+    </button>
+  
+    <button class="uc-tab " onclick="select(7)" aria-label="Diagramming">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="5" r="2"></circle><circle cx="19" cy="19" r="2"></circle><path d="M7 12h5l5-5M12 12l5 5"></path></svg>
+      <span class="uc-tab-name">Diagramming</span>
+    </button>
+  
+    <button class="uc-tab " onclick="select(8)" aria-label="Workshops">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3V6z"></path><path d="M9 3v15M15 6v15"></path></svg>
+      <span class="uc-tab-name">Workshops</span>
+    </button>
+  
+    <button class="uc-tab " onclick="select(9)" aria-label="Consolidation">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5M4 20l17-17M21 16v5h-5M15 15l6 6M4 4l5 5"></path></svg>
+      <span class="uc-tab-name">Consolidation</span>
+    </button>
+  </div>
+
+  <div class="detail-panel" id="detail-panel">
+    <div class="detail-header">
+      <p class="detail-title">Enterprise Guard</p>
+      <div class="theme-chips"><span class="theme-chip">Governance</span><span class="theme-chip">Security</span><span class="theme-chip">Compliance</span><span class="theme-chip">Visibility</span></div>
+    </div>
+    <div class="descent-list">
+      <div class="descent-item">
+          <div class="d-badge l1">L1<br>Symptom</div>
+          <div class="d-content">
+            <p class="d-headline">We have too many boards.</p>
+            <p class="d-note">Surface-level sprawl — no one knows what exists or who owns it.</p>
+          </div>
+        </div><div class="descent-item">
+          <div class="d-badge l2">L2<br>Impact</div>
+          <div class="d-content">
+            <p class="d-headline">No one knows what's stale, sensitive, or externally shared.</p>
+            <p class="d-note">Audit risk, shadow access, and no lifecycle management.</p>
+          </div>
+        </div><div class="descent-item">
+          <div class="d-badge l3">L3<br>Metric</div>
+          <div class="d-content">
+            <p class="d-headline">Scaling collaboration without governance creates compliance and operational risk.</p>
+            <p class="d-note">Becomes an executive concern as Miro becomes infrastructure.</p>
+          </div>
+        </div>
+    </div>
+    <hr class="metrics-divider">
+    <p class="metrics-label">Potential metrics</p>
+    <div class="metrics-chips"><span class="metric-chip">Audit / compliance exposure</span><span class="metric-chip">Manual admin overhead</span><span class="metric-chip">Security incidents</span><span class="metric-chip">Governance staffing burden</span></div>
+  </div>
+
+  <span class="section-label">Discovery questions by level</span>
+
+  <div class="questions-card">
+    <div class="q-header"><p>Key questions for each descent level</p></div>
+    <div class="q-section">
+      <span class="q-badge l1">L1 — surface friction</span>
+      <ul class="q-list">
+        <li class="q-item">What's difficult today?</li>
+        <li class="q-item">Where does the process break?</li>
+        <li class="q-item">What feels manual?</li>
+      </ul>
+    </div>
+    <div class="q-section">
+      <span class="q-badge l2">L2 — operational impact</span>
+      <ul class="q-list">
+        <li class="q-item">How often does that happen?</li>
+        <li class="q-item">Who's impacted?</li>
+        <li class="q-item">What does that slow down?</li>
+        <li class="q-item">What's the downstream effect?</li>
+        <li class="q-item">How much manual work does that create?</li>
+        <li class="q-item">What happens if that doesn't improve?</li>
+      </ul>
+    </div>
+    <div class="q-section">
+      <span class="q-badge l3">L3 — executive metric</span>
+      <ul class="q-list">
+        <li class="q-item">What's the cost of that delay?</li>
+        <li class="q-item">How does leadership measure success here?</li>
+        <li class="q-item">What KPI is impacted most?</li>
+        <li class="q-item">What happens if this doesn't improve?</li>
+        <li class="q-item">What would faster alignment unlock?</li>
+        <li class="q-item">What's the risk of continuing this way?</li>
+        <li class="q-item">How much engineering time gets lost?</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>The real skill isn't asking more questions.</strong> It's staying on the problem long enough to ask the right ones. When you hear "we duplicate work" — don't demo. Ask how often, between which teams, what the cost is, and what metric suffers. That's the descent.
+  </div>
+
+</div>
+
+<script>
+const icons = {
+  shield: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-4 9-8 10C8 21 4 17 4 12V7l8-4z"/></svg>`,
+  bolt: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13.5H12L11 22l8.5-11.5H12L13 2z"/></svg>`,
+  artboard: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>`,
+  microscope: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M12 3v8m-4 0h8M8 11l-4 9h16l-4-9"/></svg>`,
+  users: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+  building: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M9 22V12h6v10M3 9h18M3 15h18M9 3v6M15 3v6"/></svg>`,
+  robot: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"/><circle cx="9" cy="14" r="1.5" fill="currentColor"/><circle cx="15" cy="14" r="1.5" fill="currentColor"/><path d="M12 3v5M8 8V6M16 8V6M7 20v2M17 20v2"/></svg>`,
+  diagram: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 12h5l5-5M12 12l5 5"/></svg>`,
+  map: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3V6z"/><path d="M9 3v15M15 6v15"/></svg>`,
+  shuffle: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5M4 20l17-17M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>`
+};
+
+const useCases = [
+  { icon: 'shield', name: 'Enterprise Guard', themes: ['Governance','Security','Compliance','Visibility'], l1: { headline: 'We have too many boards.', note: 'Surface-level sprawl — no one knows what exists or who owns it.' }, l2: { headline: "No one knows what's stale, sensitive, or externally shared.", note: 'Audit risk, shadow access, and no lifecycle management.' }, l3: { headline: 'Scaling collaboration without governance creates compliance and operational risk.', note: 'Becomes an executive concern as Miro becomes infrastructure.' }, metrics: ['Audit / compliance exposure','Manual admin overhead','Security incidents','Governance staffing burden'] },
+  { icon: 'bolt', name: 'AI Workflows', themes: ['Automation','Speed','Repeatability','Efficiency'], l1: { headline: 'We spend too much time synthesising workshops.', note: 'Post-session cleanup is manual and time-consuming.' }, l2: { headline: 'PMs manually recreate requirements and deliverables after every workshop.', note: '8–12 hours per PM per week lost to translation work.' }, l3: { headline: 'Product delivery slows because teams spend days translating instead of shipping.', note: 'Slower roadmap delivery, delayed sprint starts.' }, metrics: ['8–12 hrs/week per PM','Delayed sprint starts','Slower roadmap delivery','Operational overhead'] },
+  { icon: 'artboard', name: 'Prototyping', themes: ['Alignment','Iteration speed','Early validation','Handoffs'], l1: { headline: 'It takes too long to get concepts into something visual.', note: "Ideas stay in docs and slides before anyone can react to them." }, l2: { headline: 'PM, design, and engineering alignment happens too late in the process.', note: "Misalignment only surfaces during build — when it's expensive." }, l3: { headline: 'Development cycles wasted building or iterating on the wrong solutions.', note: 'Rework hours, sprint delays, delayed launches.' }, metrics: ['Rework hours','Sprint delays','Engineering waste','Product launch delays'] },
+  { icon: 'microscope', name: 'Insights', themes: ['Customer voice','Research','Decision intelligence'], l1: { headline: 'Customer feedback lives in too many places.', note: 'Intercom, Notion, Dovetail, Slack — all disconnected.' }, l2: { headline: 'Teams spend significant time manually synthesising and validating customer signals.', note: 'Research effort is duplicated across PM, design, CS, and support.' }, l3: { headline: 'Roadmap prioritisation slows because decisions disconnect from customer intelligence.', note: 'Missed trends, lower NPS, reduced retention.' }, metrics: ['Research synthesis time','Delayed prioritisation','Missed customer trends','NPS / retention risk'] },
+  { icon: 'users', name: 'Engage', themes: ['Participation','Facilitation','Hybrid collaboration'], l1: { headline: 'Workshops feel passive or hard to facilitate remotely.', note: 'Remote attendees disengage; facilitators carry the whole session.' }, l2: { headline: 'Teams struggle to drive participation and alignment across distributed groups.', note: "Decisions made by whoever's loudest in the room." }, l3: { headline: 'Critical decisions take longer because sessions fail to create true organisational alignment.', note: 'Slower decision cycles, stalled projects.' }, metrics: ['Slower decision cycles','Meeting inefficiency','Reduced engagement','Facilitation overhead'] },
+  { icon: 'building', name: 'Enterprise Plan', themes: ['Standardisation','Scale','Admin efficiency','Adoption'], l1: { headline: 'We have multiple workspaces and inconsistent usage.', note: 'Different teams using Miro differently, or not at all.' }, l2: { headline: 'Managing onboarding, governance, permissions, and adoption manually creates friction.', note: 'IT spends significant time on Miro admin instead of strategic work.' }, l3: { headline: 'Collaboration is scaling organically without standardisation, creating inefficiency and governance risk.', note: 'Shadow IT, duplicate spend, inconsistent rollout.' }, metrics: ['Admin overhead','Shadow IT growth','Duplicate tooling spend','Slower onboarding'] },
+  { icon: 'robot', name: 'MCP / AI', themes: ['Context switching','Connected workflows','AI enablement'], l1: { headline: 'Teams switch between too many systems to get context.', note: 'Jira, Notion, Slack, Miro — all separate, no shared view.' }, l2: { headline: 'Knowledge and workflows are fragmented across tools, making AI outputs inconsistent.', note: "AI can't operate on company context it can't access." }, l3: { headline: 'Teams cannot operationalise AI because organisational knowledge is disconnected.', note: 'AI stays experimental rather than becoming a workflow.' }, metrics: ['Context-switching loss','Inconsistent AI outputs','Duplicated research','Slower AI adoption'] },
+  { icon: 'diagram', name: 'Diagramming', themes: ['Architecture','Process docs','Technical alignment'], l1: { headline: 'Architecture and process diagrams become outdated quickly.', note: "The diagram doesn't match the system — nobody trusts it." }, l2: { headline: 'Teams struggle to maintain alignment between systems, documentation, and execution.', note: 'Engineers work from stale context; onboarding takes longer.' }, l3: { headline: 'Technical misalignment creates delivery risk, onboarding inefficiency, and operational confusion.', note: 'Tech debt, implementation errors, engineering delays.' }, metrics: ['Onboarding ramp time','Implementation errors','Engineering delays','Technical debt'] },
+  { icon: 'map', name: 'Workshops', themes: ['Service design','Journey mapping','Strategy execution'], l1: { headline: 'Workshops generate a lot of ideas but become messy afterward.', note: "Post-it sprawl, action items in a doc nobody reads." }, l2: { headline: 'Teams struggle to operationalise workshop outputs into decisions and execution.', note: 'Workshop ROI is low — lots of effort, little follow-through.' }, l3: { headline: 'Strategic alignment exercises fail to consistently translate into measurable business execution.', note: 'Stalled initiatives, decision latency, duplicate workstreams.' }, metrics: ['Stalled initiatives','Decision latency','Duplicate workstreams','Low workshop ROI'] },
+  { icon: 'shuffle', name: 'Consolidation', themes: ['TCO reduction','Efficiency','Tool consolidation'], l1: { headline: 'We use too many disconnected tools.', note: 'Mural, Lucid, FigJam — overlapping, no standard.' }, l2: { headline: 'Teams recreate information and workflows across systems.', note: 'Same diagrams live in three tools; nobody knows which is current.' }, l3: { headline: 'Fragmented tooling creates operational inefficiency, inconsistent collaboration, and increased TCO.', note: 'Budget, admin, and adoption all suffer.' }, metrics: ['Tool spend','Admin overhead','Duplicated workflows','Productivity loss'] }
+];
+
+let active = 0;
+
+function renderTabs() {
+  document.getElementById('tab-grid').innerHTML = useCases.map((u, i) => `
+    <button class="uc-tab ${i === active ? 'active' : ''}" onclick="select(${i})" aria-label="${u.name}">
+      ${icons[u.icon]}
+      <span class="uc-tab-name">${u.name}</span>
+    </button>
+  `).join('');
+}
+
+function renderDetail() {
+  const u = useCases[active];
+  document.getElementById('detail-panel').innerHTML = `
+    <div class="detail-header">
+      <p class="detail-title">${u.name}</p>
+      <div class="theme-chips">${u.themes.map(t => `<span class="theme-chip">${t}</span>`).join('')}</div>
+    </div>
+    <div class="descent-list">
+      ${['l1','l2','l3'].map(l => {
+        const labels = { l1: 'L1\nSymptom', l2: 'L2\nImpact', l3: 'L3\nMetric' };
+        const d = u[l];
+        return `<div class="descent-item">
+          <div class="d-badge ${l}">${labels[l].replace('\n','<br>')}</div>
+          <div class="d-content">
+            <p class="d-headline">${d.headline}</p>
+            <p class="d-note">${d.note}</p>
+          </div>
+        </div>`;
+      }).join('')}
+    </div>
+    <hr class="metrics-divider">
+    <p class="metrics-label">Potential metrics</p>
+    <div class="metrics-chips">${u.metrics.map(m => `<span class="metric-chip">${m}</span>`).join('')}</div>
+  `;
+}
+
+function select(i) { active = i; renderTabs(); renderDetail(); }
+
+renderTabs();
+renderDetail();
+</script>
+
+
+</body></html>
